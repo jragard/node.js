@@ -29,16 +29,19 @@ const server = http.createServer((req, res) => {
                 res.setHeader('Content-Type', 'application/javascript');
 
                 body = scores;
+                // res.end(JSON.stringify(body));
             }
         } else if (req.method === "POST") {
             console.log(body);
             res.statusCode = 201;
             scores.push(body);
             scores.sort(compare);
-            scores.slice(0, 3);
+            scores.splice(3);
+            // body = slicedScore
+            // res.end(JSON.stringify(body));
         }
 
-        res.end(JSON.stringify(scores));
+        res.end(JSON.stringify(body));
     })
 
 });
